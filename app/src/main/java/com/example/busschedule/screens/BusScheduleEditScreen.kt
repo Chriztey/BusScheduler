@@ -49,6 +49,13 @@ fun EditScheduleScreen(
 ) {
     val layoutDirection = LocalLayoutDirection.current
     val scope = rememberCoroutineScope()
+    val hour = viewModel.editUiState.entry.arrivalTimeInMillis/3600000
+    val minute = viewModel.editUiState.entry.arrivalTimeInMillis%3600000/60000
+
+
+
+
+
     Entry(
         modifier = modifier,
         contentPadding = contentPadding,
@@ -63,8 +70,8 @@ fun EditScheduleScreen(
             }
         },
         timePickerState = rememberTimePickerState(
-            initialHour = 0,
-            initialMinute = 0
+            initialHour = 9,
+            initialMinute = 9
         ),
         arrivalTime = "Current Time Set To: ${viewModel.editUiState.entry.arrivalTimeInMillis/3600000}:${viewModel.editUiState.entry.arrivalTimeInMillis%3600000/60000}",
         validateEntry = viewModel.editUiState.valid
